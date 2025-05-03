@@ -38,12 +38,20 @@ namespace Rebecca::Parser
     {
         if(std::string json = Clang::Compile(path, cl.GetStandard()); not json.empty())
         {
-            path.pop_back();
             if(not IsC(cl.GetStandard()))
             {
                 path.pop_back();
                 path.pop_back();
             }
+            path.pop_back();
+            #ifdef rebecca_debug
+            path += "json";
+            File::Write(path, json);
+            path.pop_back();
+            path.pop_back();
+            path.pop_back();
+            path.pop_back();
+            #endif
             path += Extension(cl.GetShadingLanguage());
             std::string shader;
             bool succeed = false;
