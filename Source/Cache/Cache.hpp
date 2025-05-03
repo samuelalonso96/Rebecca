@@ -25,7 +25,7 @@ namespace Rebecca::Cache
 
         [[nodiscard]] auto Errors() const noexcept -> bool;
 
-        [[nodiscard]] auto Sources() const noexcept -> const std::vector<std::string>&;
+        [[nodiscard]] auto Sources() noexcept -> std::vector<std::string>&;
     };
 }
 

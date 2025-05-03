@@ -84,8 +84,8 @@ namespace Rebecca::Clang
         return true;
     }
 
-    [[nodiscard]] auto Compile(const std::string& path, const std::string& json, const Standard
-    standard) noexcept -> bool
+    [[nodiscard]] auto Compile(const std::string& path, const Standard standard) noexcept -> std::
+    string
     {
         std::string command = IsC(standard) ? "clang " : "clang++ ";
         command += path;
@@ -94,10 +94,7 @@ namespace Rebecca::Clang
         command += str;
         command += " -D rebecca_std_";
         command += str;
-        command +=
-        "= -nostdlib -ffreestanding -O3 -S -Xclang -ast-dump=json"
-        " > ";
-        command += json;
+        command += "= -nostdlib -ffreestanding -O3 -fsyntax-only -Xclang -ast-dump=json 2>&1";
         std::FILE* clang = rebecca_popen(command.c_str(), "r");
         if(clang == NULL)
             std::abort();
@@ -107,12 +104,7 @@ namespace Rebecca::Clang
             while(std::fgets(buffer, sizeof(buffer), clang) not_eq nullptr)
                 output += buffer;
         }
-        if(rebecca_pclose(clang) not_eq 0)
-        {
-            std::cerr << output;
-            return false;
-        }
-        return true;
+        return rebecca_pclose(clang) not_eq 0 ? "" : output;
     }
 }
 

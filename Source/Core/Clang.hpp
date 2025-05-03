@@ -9,8 +9,8 @@ namespace Rebecca::Clang
     [[nodiscard]] auto Inclusions(Cache::Entry& entry, const std::string& path, const Standard standard)
     noexcept -> bool;
 
-    [[nodiscard]] auto Compile(const std::string& path, const std::string& json, const Standard
-    standard) noexcept -> bool;
+    [[nodiscard]] auto Compile(const std::string& path, const Standard standard) noexcept -> std::
+    string;
 }
 
 #endif

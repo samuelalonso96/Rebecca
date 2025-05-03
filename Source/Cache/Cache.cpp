@@ -134,7 +134,7 @@ namespace Rebecca::Cache
         return m_errors;
     }
 
-    [[nodiscard]] auto Cache::Sources() const noexcept -> const std::vector<std::string>&
+    [[nodiscard]] auto Cache::Sources() noexcept -> std::vector<std::string>&
     {
         return m_sources;
     }

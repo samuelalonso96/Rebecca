@@ -5,7 +5,7 @@
 
 namespace Rebecca::Parser
 {
-    auto Parse(const std::size_t files, const std::string& path, const CommandLine& cl) noexcept ->
+    auto Parse(const std::size_t files, std::string& path, const CommandLine& cl) noexcept ->
     void;
 }
 

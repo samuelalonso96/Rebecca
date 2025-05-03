@@ -14,11 +14,11 @@ namespace Rebecca
 int main(int argc, char** argv)
 {
     const Rebecca::CommandLine cl(argc, argv);
-    const Rebecca::Cache::Cache cache(cl.Source(), cl.GetStandard(), cl.GetShadingLanguage());
+    Rebecca::Cache::Cache cache(cl.Source(), cl.GetStandard(), cl.GetShadingLanguage());
     if(not cache.Errors())
     {
         Rebecca::Threadpool pool(cl.Workers());
-        for(const std::string& source : cache.Sources())
+        for(std::string& source : cache.Sources())
             pool += [&]
             {
                 Rebecca::Parser::Parse(cache.Sources().size(), source, cl);
