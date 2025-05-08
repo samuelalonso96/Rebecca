@@ -1,6 +1,6 @@
 # Rebecca
 
-A cross-platform multi-threaded transpiler with a CLI and a cache system, written in C++23, that transpiles your C & C++ code the different shading languages: WGSL, GLSL, MSL, HLSL.
+A cross-platform multi-threaded transpiler with a CLI and a cache system, written in C++23, that transpiles your C & C++ code to the different shading languages: WGSL, GLSL, MSL, HLSL.
 
 
 ## Dependencies
