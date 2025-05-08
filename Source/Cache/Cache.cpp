@@ -33,6 +33,7 @@ namespace Rebecca::Cache
         m_file += "/.rebecca_cache";
         if(std::filesystem::exists(m_file))
         {
+            #ifndef rebecca_debug
             const std::string source = File::Read(m_file);
             std::string header;
             std::size_t offset = 0uz;
@@ -70,6 +71,7 @@ namespace Rebecca::Cache
                 else
                     element.lwt.append(1uz, character);
             }
+            #endif
         }
         const std::filesystem::recursive_directory_iterator dir(base);
         const char* const lang = IsC(standard) ? ".c" : ".cpp";
